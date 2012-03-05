@@ -1,0 +1,45 @@
+<% content_for :sidebar do %>
+  <ul class="assets_sider_list">
+    <li>
+      <%= link_to "#{l(:label_all)}", :controller => "assets", :action => "all", :project_id => @project %>
+      <span>(<%= Asset.count %>)</span>
+    </li>
+    <% if User.current.logged? %>
+    <li>
+      <%= link_to "#{l(:label_my_assets)}", :controller => "assets", :action => "my", :project_id => @project %>
+      <span>(<%= Asset.count(:conditions=>["user_id = ?", User.current.id]) %>)</span>
+    </li>
+    <% end %>
+  </ul>
+  
+  <ul class="assets_sider_list">
+    <h3><%= l(:label_category) %></h3>
+    <% for cate in AssetCategory.all(:order => "position ASC")%>
+    <li>
+      <%= link_to cate.name, :controller => "assets", :action => "all", :project_id => @project, :category => cate %>
+      <span>(<%= cate.assets_count %>)</span>
+    </li>
+    <% end %>
+  </ul>
+
+  <ul class="assets_sider_list">
+    <h3><%= l(:label_platform) %></h3>
+    <% for p in AssetPlatform.all(:order => "position ASC")%>
+    <li>
+      <%= link_to p.name, :controller => "assets", :action => "all", :project_id => @project, :platform => p %>
+      <span>(<%= p.asset_and_asset_platforms_count %>)</span>
+    </li>
+    <% end %>
+  </ul>
+
+  <ul class="assets_sider_list">
+    <h3><%= l(:label_api_language) %></h3>
+    <% for api in AssetApiLanguage.all(:order => "position ASC")%>
+    <li>
+      <%= link_to api.name, :controller => "assets", :action => "all", :project_id => @project, :api => api %>
+      <span>(<%= api.asset_and_api_languages_count %>)</span>
+    </li>
+    <% end %>
+  </ul>
+  
+<% end %>

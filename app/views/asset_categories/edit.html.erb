@@ -1,0 +1,6 @@
+<h2><%= l(:label_edit) %></h2>
+
+<% labelled_tabular_form_for :asset_category, @asset_category, :url => {:action => 'edit', :id => @asset_category} do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <%= submit_tag l(:button_update) %>
+<% end %>

@@ -1,0 +1,14 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'assets', :plugin => 'redmine_assets' %>
+  <%= javascript_include_tag 'assets', :plugin => 'redmine_assets' %>
+<% end %>
+
+<h2><%=l(:label_new)%></h2>
+
+<% labelled_tabular_form_for :asset, @asset, :url => {:controller => 'assets', :action => 'create'}, :html => {:multipart => true, :id => 'issue-form', :class => 'tabular new-issue-form'} do |f| %>
+  <%= error_messages_for 'asset' %>
+  <div class="box asset_form">
+    <%= render :partial => 'assets/form', :locals => {:f => f} %>
+  </div>
+  
+<% end %>

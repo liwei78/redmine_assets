@@ -1,0 +1,66 @@
+.clearfix {
+  clear: both;
+}
+.assets_nav {
+  line-height: 24px;
+}
+.assets_nav .actions {
+  float: right;
+}
+.assets_add_more {
+  float: right;
+}
+.assets_add_more a {
+  font-size: 12px;
+  font-weight: normal;
+}
+ul.assets_sider_list {
+  padding: 0;
+  margin: 0;
+}
+ul.assets_sider_list h3 {
+  border-bottom: none !important;
+}
+ul.assets_sider_list li {
+  list-style: none;
+  line-height: 30px;
+}
+ul.assets_list {}
+ul.assets_list li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  float: left;
+}
+ul.assets_list .asset_icon {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  float: left;
+}
+ul.assets_list .asset_info {
+  width: 130px;
+  float: left;
+}
+ul.assets_list .asset_info .asset_title a {
+  font-size: 14px;
+  line-height: 24px;
+}
+.assets_show {
+  text-align: 200%;
+}
+.assets_show .icon {
+  width: 160px;
+  float: left;
+  margin-right: 10px;
+}
+.assets_show .info p {
+  line-height: 200% !important;
+}
+.assets_show .asset_desc {
+  float: left;
+}
+

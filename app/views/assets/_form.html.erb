@@ -1,0 +1,58 @@
+<%= hidden_field_tag :project_id, params[:project_id] %>
+<p>
+  <%= f.text_field :name, :required => true %>
+</p>
+<% unless @asset.new_record? %>
+<p>
+  <%= image_tag @asset.icon.url, :width => "120" %>
+</p>
+<% end %>
+<p>
+  <%= f.file_field :icon, :required => true %>
+</p>
+<p>
+  <%= label_tag l(:label_category)+"<span class='required'> *</span>" %>
+  <% for cat in AssetCategory.all(:order => "position ASC")%>
+    <%= f.radio_button "asset_category_id", cat.id %> <%= cat.name %> <br>
+  <% end %>
+</p>
+<p>
+  <%= label_tag l(:label_platform)%>
+  <% for p in AssetPlatform.all(:order => "position ASC")%>
+    <%= check_box_tag "asset_platform[]", p.id, @asset.asset_platforms.include?(p) %> <%= p.name %> <br>
+  <% end %>
+</p>
+<p>
+  <%= label_tag l(:label_api_language)%>
+  <% for api in AssetApiLanguage.all(:order => "position ASC")%>
+    <%= check_box_tag "asset_api_language[]", api.id, @asset.asset_api_languages.include?(api) %> <%= api.name %> <br>
+  <% end %>
+</p>
+<p>
+  <%= wikitoolbar_for "asset['description']" %>
+</p>
+<% if User.current.admin? %>
+<p>
+  <%= label_tag l(:label_assets_user_id)%>
+  <%= text_field_tag "asset[user_id]", @asset.user_id %>
+</p>
+<% end %>
+<p>
+  <%= f.text_field :author %>
+</p>
+<p>
+  <%= f.text_field :website %>
+</p>
+<p>
+  <%= f.text_field :compatible_with %>
+</p>
+<p>
+  <%= f.file_field :attachment  %>
+</p>
+<% if @asset.new_record? %>
+  <%= submit_tag l(:button_create), :id => "submit_btn" %>
+<% else %>
+  <%= submit_tag l(:button_save), :id => "submit_btn" %>
+<% end %>
+
+

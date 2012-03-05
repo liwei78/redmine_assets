@@ -1,0 +1,68 @@
+<table class="list">
+  <thead><tr>
+      <th colspan="3"><%= l(:label_category) %></th>
+    </tr></thead>
+  <tbody>
+    <% AssetCategory.all(:order => "position ASC").each do |cate|
+      next if cate.new_record? %>
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td width="30%"><%=h cate.name %></td>
+        <td width="40%" align="center">
+          <%= reorder_links('asset_category', {:controller => 'asset_categories', :action => 'edit', :id => cate}) %>
+        </td>
+        <td width="30%" class="buttons">
+          <%= link_to l(:button_edit), {:controller => 'asset_categories', :action => 'edit', :id => cate}, :class => 'icon icon-edit' %>
+          <%= link_to l(:button_delete), {:controller => 'asset_categories', :action => 'destroy', :id => cate}, :confirm => l(:text_are_you_sure), :method => :post, :class => 'icon icon-del' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div><%= link_to l(:label_asset_category_new), {:controller => 'asset_categories', :action => 'new'} %></div>
+
+<table class="list">
+  <thead><tr>
+      <th colspan="3"><%= l(:label_platform) %></th>
+    </tr></thead>
+  <tbody>
+    <% AssetPlatform.all(:order => "position ASC").each do |p|
+      next if p.new_record? %>
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td width="30%"><%=h p.name %></td>
+        <td width="40%" align="center">
+          <%= reorder_links('asset_platform', {:controller => 'asset_platforms', :action => 'edit', :id => p}) %>
+        </td>
+        <td width="30%" class="buttons">
+          <%= link_to l(:button_edit), {:controller => 'asset_platforms', :action => 'edit', :id => p}, :class => 'icon icon-edit' %>
+          <%= link_to l(:button_delete), {:controller => 'asset_platforms', :action => 'destroy', :id => p}, :confirm => l(:text_are_you_sure), :method => :post, :class => 'icon icon-del' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div><%= link_to l(:label_asset_platform_new), {:controller => 'asset_platforms', :action => 'new'} %></div>
+
+<table class="list">
+  <thead><tr>
+      <th colspan="3"><%= l(:label_api_language) %></th>
+    </tr></thead>
+  <tbody>
+    <% AssetApiLanguage.all(:order => "position ASC").each do |api|
+      next if api.new_record? %>
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td width="30%"><%=h api.name %></td>
+        <td width="40%" align="center">
+          <%= reorder_links('asset_api_language', {:controller => 'asset_api_languages', :action => 'edit', :id => api}) %>
+        </td>
+        <td width="30%" class="buttons">
+          <%= link_to l(:button_edit), {:controller => 'asset_api_languages', :action => 'edit', :id => api}, :class => 'icon icon-edit' %>
+          <%= link_to l(:button_delete), {:controller => 'asset_api_languages', :action => 'destroy', :id => api}, :confirm => l(:text_are_you_sure), :method => :post, :class => 'icon icon-del' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div><%= link_to l(:label_api_language_new), {:controller => 'asset_api_languages', :action => 'new'} %></div>
+
+

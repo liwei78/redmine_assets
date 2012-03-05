@@ -1,0 +1,31 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'assets', :plugin => 'redmine_assets' %>
+<% end %>
+<%= render :partial => 'assets/sider' %>
+<div class="assets_main">
+  <table border="0" cellspacing="5" cellpadding="5" width="100%">
+    <tr><td>
+      <h2>
+        <%= l(:label_assets) %>
+      </h2>
+    </td></tr>
+    <tr><td>
+      <ul class="assets_list">
+        <% for asset in @assets %>
+          <li>
+            <div class="asset_icon">
+              <%= link_to image_tag(asset.icon.url, :width => 60, :height => 60), :action => "show", :id => asset.id, :project_id => @project %>
+            </div>
+            <div class="asset_info">
+              <div class="asset_title"><%= link_to asset.name, :action => "show", :id => asset.id, :project_id => @project %></div>
+              <div class="asset_comments"><%= asset.asset_comments_count %> <%= l(:asset_comments_count) %></div>
+            </div>
+            <div class="clearfix"></div>
+          </li>
+        <% end %>
+        <div class="clearfix"></div>
+      </ul>
+      <%= will_paginate @assets, :param_name => "page", :previous_label => l(:label_pre_page), :next_label => l(:label_next_page) %>
+    </td></tr>
+  </table>
+</div>

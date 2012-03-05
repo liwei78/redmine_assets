@@ -1,0 +1,6 @@
+<h2><%= l(:label_api_language_new) %></h2>
+
+<% labelled_tabular_form_for :asset_api_language, @api_language, :url => {:action => 'new'} do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <%= submit_tag l(:button_commit) %>
+<% end %>

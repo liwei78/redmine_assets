@@ -1,0 +1,25 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'assets', :plugin => 'redmine_assets' %>
+<% end %>
+<%= render :partial => 'assets/sider' %>
+<div class="assets_main">
+  <table border="0" cellspacing="5" cellpadding="5" width="100%">
+    <tr><td>
+      <h2>
+        <div class="assets_add_more">
+          <%= link_to "#{l(:label_assets_new)}", :controller => "assets", :action => "new", :project_id => @project %>
+        </div>
+        <%= l(:label_assets_recommend) %>
+      </h2>
+    </td></tr>
+    <tr><td>
+      <%= render :partial => 'assets/asset_list', :locals => {:assets => @recommends} %>
+    </td></tr>
+    <tr><td>
+      <h2><%= l(:label_assets_last_updated) %></h2>
+    </td></tr>
+    <tr><td>
+      <%= render :partial => 'assets/asset_list', :locals => {:assets => @updateds} %>
+    </td></tr>
+  </table>
+</div>  
