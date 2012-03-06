@@ -7,6 +7,6 @@ class CreateAssetAndAssetPlatforms < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :asset_and_platforms
+    drop_table :asset_and_asset_platforms
   end
 end

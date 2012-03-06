@@ -7,6 +7,6 @@ class CreateAssetAndApiLanguages < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :asset_apis
+    drop_table :asset_and_api_languages
   end
 end

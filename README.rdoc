@@ -9,5 +9,8 @@ enviroment:
 
 install:
   cd vender/plugins/
-  git clone git@github.com:liwei78/redmine_assets.git
+  git clone git://github.com/liwei78/redmine_assets.git
   rake db:migrate_plugins
+  
+push:
+  git push redmine_assets master
