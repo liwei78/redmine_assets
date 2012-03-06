@@ -54,35 +54,48 @@
       <td colspan="2">
         <h3><%= l(:label_assets_description) %></h3>
         <div>
-          <%= simple_format @asset.description %>
+          <%= textilizable @asset, :description %>
         </div>
       </td>
     </tr>
-  </table>
-
-  <% labelled_tabular_form_for :comment, :url => {:action => 'postcomment', :id => @asset, :project_id => params[:project_id]} do |f| %>
-    <div>
-      <%= text_field_tag :comment, "", :style => "width: 400px;" %>
-      <%= submit_tag l(:button_write_commit) %>
-    </div>
-    {{comment_form}}
-  <% end if User.current.logged? %>
-
-  <table border="0" cellspacing="5" cellpadding="5" width="100%">
-    <% for comment in @comments %>
     <tr>
       <td colspan="2">
-        <%= comment.user.name %> : <%=h comment.comment%> (<%= comment.created_at.to_s(:db) %>)
-        <% if User.current.admin? or comment.user_id == User.current.id %>
-          [<%= link_to l(:label_delete), {:action => :delcomment, :id => @asset, :cid => comment, :project_id => params[:project_id]}, :confirm => l(:text_are_you_sure), :method => :post %>]
+        <h3><%= l(:label_reply_plural) %> (<%= @asset.asset_comments_count %>)</h3>
+        <% @comments.each do |message| %>
+          <div class="message reply" id="<%= "message-#{message.id}" %>">
+          <h4>
+            <div class="contextual">
+              <%= link_to(image_tag('delete.png'), {:action => 'delcomment', :id => @asset, :cid => message, :project_id => @project}, :method => :post, :confirm => l(:text_are_you_sure), :title => l(:button_delete)) if message.user_id == User.current.id %>
+            </div>
+            <%= avatar(message.user, :size => "24") %>
+            <%= authoring message.created_at, message.user %>
+          </h4>
+          <div class="wiki"><%= textilizable message, :comment %></div>
+          <% if message.attachment.file? %>
+          <div class=""><%= l(:label_assets_attachment) %>: <%= link_to message.attachment.original_filename, message.attachment.url %></div>
+          <% end %>
+          </div>
+        <% end %>
+        <p class="pagination"><%= will_paginate @comments, :param_name => "page", :previous_label => l(:label_pre_page), :next_label => l(:label_next_page) %></p>
+        
+      </td>
+    </tr>
+    <% if User.current.logged? %>
+    <tr>
+      <td colspan="2">
+        <% form_for :comment, :url => {:action => 'postcomment', :id => @asset, :project_id => params[:project_id]}, :html => {:multipart => true} do |f| %>
+          <%= text_area_tag :comment, "", :cols => 60, :rows => 5, :class => 'wiki-edit', :id => "comment_input" %>
+          <%= wikitoolbar_for 'comment_input' %>
+          <div>
+            <div style="float: right;">
+              <%= submit_tag l(:button_write_commit) %>
+            </div>
+            <%= file_field_tag :attachment %>
+          </div>
         <% end %>
       </td>
     </tr>
     <% end %>
-    <tr>
-      <td colspan="2">
-        <%= will_paginate @comments, :param_name => "page", :previous_label => l(:label_pre_page), :next_label => l(:label_next_page) %>
-      </td>
-    </tr>
   </table>
+
 </div>

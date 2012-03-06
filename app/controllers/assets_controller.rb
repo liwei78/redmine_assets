@@ -123,7 +123,7 @@ class AssetsController < ApplicationController
   
   def postcomment
     asset = Asset.find(params[:id])
-    AssetComment.create(:user_id => User.current.id, :asset_id => asset.id,  :comment => params[:comment]) unless params[:comment].blank?
+    AssetComment.create(:user_id => User.current.id, :asset_id => asset.id,  :comment => params[:comment], :attachment => params[:attachment]) unless params[:comment].blank?
     redirect_to :back
   end
   

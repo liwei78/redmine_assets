@@ -29,7 +29,8 @@
   <% end %>
 </p>
 <p>
-  <%= wikitoolbar_for "asset['description']" %>
+  <%= f.text_area :description, :cols => 60, :rows => (@asset.description.blank? ? 10 : [[10, @asset.description.length / 50].max, 100].min), :class => 'wiki-edit' %>
+  <%= wikitoolbar_for 'asset_description' %>
 </p>
 <% if User.current.admin? %>
 <p>
