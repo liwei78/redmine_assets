@@ -23,11 +23,14 @@ zh:
   label_delete: "删除"
   label_recommend: "推荐"
   label_unrecommend: "取消推荐"
+  label_code_repository: "代码地址"
+  label_updated_at: "最近更新"
   
   field_compatible_with: "Compatible With"
   field_attachment: "附件"
   field_icon: "icon"
   field_website: "网站"
+  field_code_repository: "代码地址"
 
   asset_comments_count: "评论"
   button_write_commit: "发表评论"

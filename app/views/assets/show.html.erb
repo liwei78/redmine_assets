@@ -29,7 +29,10 @@
             <%= l(:label_assets_author) %> : <%= link_to @asset.author, user_path(@asset.user_id) %>
           </p>
           <p>
-            <%= l(:label_assets_website) %> : <%= link_to @asset.website, @asset.website, :target => "_blank" %>
+            <%= l(:label_code_repository) %> : <%= link_to @asset.code_repository, @asset.code_repository, :target => "_blank" %>
+          </p>
+          <p>
+            <%= l(:label_updated_at) %> : <%= @asset.updated_at.strftime("%Y-%m-%d") %>
           </p>
           <p>
             <%= l(:label_assets_compatible_with) %> : <%= @asset.compatible_with %>
@@ -39,6 +42,9 @@
           </p>
           <p>
             <%= l(:label_api_language) %> : <%= @asset.asset_api_languages.map{|a| link_to a.name, :action => :index, :api => a.id, :project_id => @project}.join(", ") %>
+          </p>
+          <p>
+            <%= l(:label_assets_website) %> : <%= link_to @asset.website, @asset.website, :target => "_blank" %>
           </p>
         </div>
       </td>

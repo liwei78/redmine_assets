@@ -2,13 +2,16 @@
 <p>
   <%= f.text_field :name, :required => true %>
 </p>
+<p>
+  <%= f.text_field :code_repository %>
+</p>
 <% unless @asset.new_record? %>
 <p>
   <%= image_tag @asset.icon.url, :width => "120" %>
 </p>
 <% end %>
 <p>
-  <%= f.file_field :icon, :required => true %>
+  <%= f.file_field :icon %>
 </p>
 <p>
   <%= label_tag l(:label_category)+"<span class='required'> *</span>" %>

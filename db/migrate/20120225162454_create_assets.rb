@@ -7,6 +7,7 @@ class CreateAssets < ActiveRecord::Migration
       t.string   :author
       t.string   :website
       t.string   :compatible_with
+      t.string   :code_repository
       
       t.string   :icon_file_name
       t.string   :icon_content_type

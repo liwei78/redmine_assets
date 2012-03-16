@@ -34,6 +34,7 @@ ul.assets_list li {
   margin-bottom: 10px;
   width: 200px;
   float: left;
+  overflow: hidden;
 }
 ul.assets_list .asset_icon {
   width: 60px;

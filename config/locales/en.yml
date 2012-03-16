@@ -23,11 +23,14 @@ en:
   label_delete: "delete"
   label_recommend: "recommend"
   label_unrecommend: "unrecommend"
+  label_code_repository: "Code Repository"
+  label_updated_at: "Last Update"
   
   field_compatible_with: "Compatible With"
   field_attachment: "attachment"
   field_icon: "icon"
   field_website: "website"
+  field_code_repository: "Code Repository"
 
   asset_comments_count: "comments"
   button_write_commit: "post comment"
