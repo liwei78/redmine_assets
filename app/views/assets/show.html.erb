@@ -14,50 +14,55 @@
       <%= link_to "#{@asset.top? ? l(:label_unrecommend) : l(:label_recommend)}", {:action => "recommend", :id => @asset.id, :project_id => @project}, :confirm => l(:text_are_you_sure), :method => :post %>
     <% end %>
   </div>
-  <%= link_to l(:label_assets_index), :action => :index, :project_id => @project %> - <%= @asset.name %>
+  <h2><%= link_to l(:label_assets_index), :action => :index, :project_id => @project %> - <%= @asset.name %></h2>
 </div>
 <div class="assets_show">
-  <table border="0" cellspacing="5" cellpadding="5" width="100%">
+  <table border="0" cellspacing="5" cellpadding="5" width="100%" class="asset_view_table">
     <tr>
-      <td width="160"><%= image_tag @asset.icon.url %></td>
-      <td valign="top">
-        <div class="info">
-          <p>
-            <%= l(:label_assets_name) %> : <%= @asset.name %>
-          </p>
-          <p>
-            <%= l(:label_assets_author) %> : <%= link_to @asset.author, user_path(@asset.user_id) %>
-          </p>
-          <p>
-            <%= l(:label_code_repository) %> : <%= link_to @asset.code_repository, @asset.code_repository, :target => "_blank" %>
-          </p>
-          <p>
-            <%= l(:label_updated_at) %> : <%= @asset.updated_at.strftime("%Y-%m-%d") %>
-          </p>
-          <p>
-            <%= l(:label_assets_compatible_with) %> : <%= @asset.compatible_with %>
-          </p>
-          <p>
-            <%= l(:label_platform) %> : <%= @asset.asset_platforms.map{|p| link_to p.name, :action => :index, :platform => p.id, :project_id => @project}.join(", ") %>
-          </p>
-          <p>
-            <%= l(:label_api_language) %> : <%= @asset.asset_api_languages.map{|a| link_to a.name, :action => :index, :api => a.id, :project_id => @project}.join(", ") %>
-          </p>
-          <p>
-            <%= l(:label_assets_website) %> : <%= link_to @asset.website, @asset.website, :target => "_blank" %>
-          </p>
-        </div>
+      <td rowspan="8" width="160px" valign="top">
+        <%= image_tag @asset.icon.url %>
       </td>
+      <th><%= l(:label_assets_name) %></th>
+      <td><%= @asset.name %></td>
     </tr>
+    <tr>
+      <th><%= l(:label_assets_author) %></th>
+      <td><%= link_to @asset.author, user_path(@asset.user_id) %></td>
+    </tr>
+    <tr>
+      <th><%= l(:label_code_repository) %></th>
+      <td><%= link_to @asset.code_repository, @asset.code_repository, :target => "_blank" %></td>
+    </tr>
+    <tr>
+      <th><%= l(:label_updated_at) %></th>
+      <td><%= @asset.updated_at.strftime("%Y-%m-%d") %></td>
+    </tr>
+    <tr>
+      <th><%= l(:label_assets_compatible_with) %></th>
+      <td><%= @asset.compatible_with %></td>
+    </tr>
+    <tr>
+      <th><%= l(:label_platform) %></th>
+      <td><%= @asset.asset_platforms.map{|p| link_to p.name, :action => :index, :platform => p.id, :project_id => @project}.join(", ") %></td>
+    </tr>
+    <tr>
+      <th><%= l(:label_api_language) %></th>
+      <td><%= @asset.asset_api_languages.map{|a| link_to a.name, :action => :index, :api => a.id, :project_id => @project}.join(", ") %></td>
+    </tr>
+    <tr>
+      <th><%= l(:label_assets_website) %></th>
+      <td><%= link_to @asset.website, @asset.website, :target => "_blank" %></td>
+    </tr>
+  
     <% if @asset.attachment.file? %>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <%= l(:label_assets_attachment) %>: <%= link_to @asset.attachment.original_filename, @asset.attachment.url %> <%= @asset.author %>
       </td>
     </tr>
     <% end %>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <h3><%= l(:label_assets_description) %></h3>
         <div>
           <%= textilizable @asset, :description %>
@@ -65,7 +70,7 @@
       </td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <h3><%= l(:label_reply_plural) %> (<%= @asset.asset_comments_count %>)</h3>
         <% @comments.each do |message| %>
           <div class="message reply" id="<%= "message-#{message.id}" %>">
@@ -88,7 +93,7 @@
     </tr>
     <% if User.current.logged? %>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <% form_for :comment, :url => {:action => 'postcomment', :id => @asset, :project_id => params[:project_id]}, :html => {:multipart => true} do |f| %>
           <%= text_area_tag :comment, "", :cols => 60, :rows => 5, :class => 'wiki-edit', :id => "comment_input" %>
           <%= wikitoolbar_for 'comment_input' %>

@@ -64,4 +64,10 @@ ul.assets_list .asset_info .asset_title a {
 .assets_show .asset_desc {
   float: left;
 }
-
+.asset_view_table tr th {
+  text-align: left;
+  padding-left: 20px;
+  width: 180px;
+  color: #aaa;
+  font-weight: normal;
+}
