@@ -5,7 +5,7 @@
         <%= link_to image_tag(asset.icon.url, :width => 60, :height => 60), :action => "show", :id => asset.id, :project_id => @project %>
       </div>
       <div class="asset_info">
-        <div class="asset_title"><%= link_to asset.name, :action => "show", :id => asset.id, :project_id => @project %></div>
+        <div class="asset_title"><%= link_to truncate(asset.name, 10, '...'), :action => "show", :id => asset.id, :project_id => @project %></div>
         <div class="asset_category"><%= asset.category_name %></div>
         <div class="asset_comments"><%= asset.asset_comments_count %> <%= l(:asset_comments_count) %></div>
       </div>
