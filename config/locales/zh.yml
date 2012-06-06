@@ -31,6 +31,7 @@ zh:
   field_icon: "icon"
   field_website: "网站"
   field_code_repository: "代码地址"
+  field_position: "排序"
 
   asset_comments_count: "评论"
   button_write_commit: "发表评论"

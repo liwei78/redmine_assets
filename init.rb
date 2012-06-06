@@ -15,7 +15,7 @@ Redmine::Plugin.register :redmine_assets do
 
   project_module :assets do
     permission :manage_assets, {:assets => [:my, :edit, :update, :new, :create, :destroy, :recommend, :my, :postcomment, :delcomment]}, :require => :loggedin
-    permission :view_assets, {:assets => [:index, :show, :all]}, :public => true
+    permission :view_assets, {:assets => [:index, :show, :all]}
   end
 
   menu :project_menu, :assets, {:controller => "assets", :action => "index"}, :caption => "Assets", :param => :project_id

@@ -31,6 +31,7 @@ en:
   field_icon: "icon"
   field_website: "website"
   field_code_repository: "Code Repository"
+  field_position: "Position"
 
   asset_comments_count: "comments"
   button_write_commit: "post comment"
