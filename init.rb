@@ -1,12 +1,13 @@
 # liwei created at 2012-2-20
 # 0.0.1 basic
+# 0.0.2 add jiathis to asset's view
 require 'redmine'
 
 Redmine::Plugin.register :redmine_assets do
   name 'Redmine Assets plugin'
   author 'Riquel Li'
   description 'This is a plugin for Redmine to manage your assets.'
-  version '0.0.1'
+  version '0.0.2'
   url 'http://railser.cn'
   author_url 'http://railser.cn/me'
 
