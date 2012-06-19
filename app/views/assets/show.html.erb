@@ -11,7 +11,7 @@
     <% end %>
     <% if User.current.admin? %>
       |
-      <%= link_to "#{@asset.top? ? l(:label_unrecommend) : l(:label_recommend)}", {:action => "recommend", :id => @asset.id, :project_id => @project}, :confirm => l(:text_are_you_sure), :method => :post %>
+      <%= link_to "#{@asset.top? ? l(:label_assets_unrecommend) : l(:label_assets_recommend)}", {:action => "recommend", :id => @asset.id, :project_id => @project}, :confirm => l(:text_are_you_sure), :method => :post %>
     <% end %>
   </div>
   <h2><%= link_to l(:label_assets_index), :action => :index, :project_id => @project %> - <%= @asset.name %></h2>
